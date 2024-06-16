@@ -1,5 +1,21 @@
-const ApiFetch = async () => {
-    const data = await fetch('http://localhost:3000/api/fetchRoute')
+'use client'
+
+import { useEffect, useState } from "react"
+
+const ApiFetch = () => {
+    const [data, setData] = useState()
+    useEffect(() => {
+        const getData = async () => {
+            const response = await fetch('http://localhost:3000/api/fetchRoute')
+            const data = await response.json()
+            setData(data)
+        }
+        getData()
+        return () => {
+
+        }
+    }, [])
+
     // console.log(data);
     return (
         <div>
